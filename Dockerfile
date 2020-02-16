@@ -1,1 +1,1 @@
-From registry.cn-hangzhou.aliyuncs.com/linyr/deepstream:4.0.1-19.09-devel
+From  nvcr.io/nvidia/deepstream:4.0.2-19.12-devel
