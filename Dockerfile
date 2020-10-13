@@ -1,1 +1,1 @@
-From  ufoym/deepo:caffe
+From  Ubuntu:16.04
