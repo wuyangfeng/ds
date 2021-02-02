@@ -1,1 +1,1 @@
-From  nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
+From  nvcr.io/nvidia/deepstream:5.0.1-20.09-triton
