@@ -1,4 +1,4 @@
-FROM Ubuntu
+FROM ubuntu:18.04
 RUN apt-get update && apt-get upgrade \
     && apt install build-essential zlib1g-dev libbz2-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget \
     && wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz \
