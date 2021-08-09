@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 RUN apt-get update && apt-get -y upgrade \
     && apt-get -y install vim \
     && apt-get -y install unzip zip \
@@ -21,7 +21,7 @@ RUN apt-get update && apt-get -y upgrade \
     && pip install scipy==1.3.1 \
     && pip install requests \
     && pip install flask \
-    && pip install fastaip \
+    && pip install fastapi \
     && pip install uvicorn \
     && cd /root/.cacche && mkdir torch && cd torch && mkdir hub && cd hub && mkdir checkpoints
     
