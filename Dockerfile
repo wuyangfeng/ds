@@ -4,9 +4,9 @@ RUN apt-get update && apt-get -y upgrade \
     && apt-get -y install unzip zip \
     && apt-get -y install net-tools \
     && apt -y install build-essential zlib1g-dev libbz2-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget \
-    && wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz \
-    && tar -xzvf Python-3.7.4.tgz \
-    && cd Python-3.7.4 \
+    && wget https://www.python.org/ftp/python/3.7.6/Python-3.7.6.tgz \
+    && tar -xzvf Python-3.7.6.tgz \
+    && cd Python-3.7.6 \
     && ./configure --prefix=/usr/local/src/python37 \
     && make && make install \
     && rm -rf /usr/bin/python \
