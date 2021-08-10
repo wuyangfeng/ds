@@ -24,6 +24,8 @@ RUN apt-get update && apt-get -y upgrade \
     && pip install fastapi \
     && pip install uvicorn \
     && pip install pandas \
+    && pip install tqdm \
+    && pip install matplotlib \
     && cd /root/.cache && mkdir torch && cd torch && mkdir hub && cd hub && mkdir checkpoints
     
 EXPOSE 80 81
