@@ -23,6 +23,7 @@ RUN apt-get update && apt-get -y upgrade \
     && pip install flask \
     && pip install fastapi \
     && pip install uvicorn \
+    && pip install pandas \
     && cd /root/.cache && mkdir torch && cd torch && mkdir hub && cd hub && mkdir checkpoints
     
 EXPOSE 80 81
