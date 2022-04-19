@@ -14,7 +14,7 @@ RUN apt-get update && apt-get -y upgrade \
     && ln -s /usr/local/src/python36/bin/python3.6 /usr/bin/python \
     && ln -s /usr/local/src/python36/bin/pip3.6 /usr/bin/pip \
     && pip install --upgrade pip \
-    && pip install torch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0\
+    && pip install torch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 \
     && pip install opencv-contrib-python==4.2.0.34 \
     && apt-get -y install libglib2.0-dev libsm6 libxrender1 libxext-dev \
     && pip install pillow==7.1.2 \
