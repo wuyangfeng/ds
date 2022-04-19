@@ -28,6 +28,7 @@ RUN apt-get update && apt-get -y upgrade \
     && pip install cython \ 
     && pip install cython_bbox \
     && pip install kafka-python \
+    && pip install py3Fdfs \
     && pip install scipy==1.3.1 \
     && pip install requests \
     && pip install flask \
