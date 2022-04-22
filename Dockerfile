@@ -17,8 +17,8 @@ RUN apt-get update && apt-get -y upgrade \
     && pip install torch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 \
     && pip install opencv-contrib-python==4.2.0.34 \
     && apt-get -y install libglib2.0-dev libsm6 libxrender1 libxext-dev \
-    && apt-get install libopenblas-dev \
-    && apt-get install libomp-dev \
+    && apt-get -y install libopenblas-dev \
+    && apt-get -y install libomp-dev \
     && pip install pillow==7.1.2 \
     && pip install pyyaml==5.3.1 \
     && pip install grpcio -i https://pypi.tuna.tsinghua.edu.cn/simple \
