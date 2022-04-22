@@ -34,6 +34,10 @@ RUN apt-get update && apt-get -y upgrade \
     && pip install scikit-learn \
     && pip install termcolor \
     && pip install yacs \
+    && pip install tabulate \
+    && pip install tensorboard \
+    && pip install lmdb \
+    && pip install pymongo \
     && pip install scipy==1.3.1 \
     && pip install requests \
     && pip install flask \
