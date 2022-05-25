@@ -16,4 +16,5 @@ RUN apt-get update && apt-get -y upgrade \
     && pip install --upgrade pip \
     && pip install paddlepaddle-gpu \
     && pip install paddlespeech \
-    && pip install ppgan
+    && pip install ppgan  \
+    && pip install opencv-python-headless
