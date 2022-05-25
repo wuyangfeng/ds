@@ -17,4 +17,10 @@ RUN apt-get update && apt-get -y upgrade \
     && pip install paddlepaddle-gpu \
     && pip install paddlespeech \
     && pip install ppgan  \
-    && pip install opencv-python-headless
+    && pip install opencv-python-headless \
+    && wget http://ffmpeg.org/releases/ffmpeg-4.3.4.tar.gz \
+    && tar -zxvf ffmpeg-4.3.4.tar.gz \
+    && cd ffmpeg-4.3.4 \
+    && apt-get install yasm \
+    && ./configure \
+    && make & make install
