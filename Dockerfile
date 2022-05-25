@@ -12,8 +12,4 @@ RUN apt-get update && apt-get -y upgrade \
     && make && make install \
     && rm -rf /usr/bin/python \
     && ln -s /usr/local/src/python36/bin/python3.8 /usr/bin/python \
-    && ln -s /usr/local/src/python36/bin/pip3.8 /usr/bin/pip \
-    && pip install --upgrade pip \
-    && pip install paddlepaddle-gpu \ 
-    && pip install paddlespeech \
-    && pip install ppgan
+    && ln -s /usr/local/src/python36/bin/pip3.8 /usr/bin/pip 
