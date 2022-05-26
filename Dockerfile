@@ -4,7 +4,7 @@ RUN apt-get update && apt-get -y upgrade \
     && apt-get -y install unzip zip \
     && apt-get -y install net-tools \
     && apt-get -y install liblzma-dev \ 
-    && apt-get -y install libsndfile1 \
+    && apt-get -y install libsndfile1 libsqlite3-dev\
     && apt -y install build-essential zlib1g-dev libbz2-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget \
     && wget https://www.python.org/ftp/python/3.8.13/Python-3.8.13.tgz \
     && tar -xzvf Python-3.8.13.tgz \
