@@ -25,7 +25,7 @@ RUN apt-get update && apt-get -y upgrade \
     && cd ffmpeg-4.3.4 \
     && apt-get install yasm \
     && ./configure \
-    && make & make install \
+    && make && make install \
     && pip install grpcio -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install grpcio-tools -i https://pypi.tuna.tsinghua.edu.cn/simple 
     
