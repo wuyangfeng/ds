@@ -13,7 +13,7 @@ RUN apt-get update && apt-get -y upgrade \
     && make && make install \
     && rm -rf /usr/bin/python \
     && ln -s /usr/local/src/python38/bin/python3.8 /usr/bin/python \
-    && ln -s /usr/local/src/python38/bin/pip3.8 /usr/bin/pip 
+    && ln -s /usr/local/src/python38/bin/pip3.8 /usr/bin/pip \
     && pip install --upgrade pip \
     && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install paddlepaddle-gpu \
