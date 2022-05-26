@@ -4,6 +4,7 @@ RUN apt-get update && apt-get -y upgrade \
     && apt-get -y install unzip zip \
     && apt-get -y install net-tools \
     && apt-get -y install liblzma-dev \ 
+    && apt-get install libsndfile1 -y \
     && apt -y install build-essential zlib1g-dev libbz2-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget \
     && wget https://www.python.org/ftp/python/3.8.13/Python-3.8.13.tgz \
     && tar -xzvf Python-3.8.13.tgz \
@@ -26,4 +27,5 @@ RUN apt-get update && apt-get -y upgrade \
     && ./configure \
     && make & make install \
     && pip install grpcio -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install grpcio-tools -i https://pypi.tuna.tsinghua.edu.cn/simple
+    && pip install grpcio-tools -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    
