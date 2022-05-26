@@ -27,5 +27,5 @@ RUN apt-get update && apt-get -y upgrade \
     && ./configure \
     && make & make install \
     && pip install grpcio -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install grpcio-tools -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    && pip install grpcio-tools -i https://pypi.tuna.tsinghua.edu.cn/simple 
     
