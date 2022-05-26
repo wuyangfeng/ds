@@ -14,6 +14,7 @@ RUN apt-get update && apt-get -y upgrade \
     && ln -s /usr/local/src/python38/bin/python3.8 /usr/bin/python \
     && ln -s /usr/local/src/python38/bin/pip3.8 /usr/bin/pip 
     && pip install --upgrade pip \
+    && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install paddlepaddle-gpu \
     && pip install paddlespeech \
     && pip install ppgan  \
@@ -23,4 +24,6 @@ RUN apt-get update && apt-get -y upgrade \
     && cd ffmpeg-4.3.4 \
     && apt-get install yasm \
     && ./configure \
-    && make & make install
+    && make & make install \
+    && pip install grpcio -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    && pip install grpcio-tools -i https://pypi.tuna.tsinghua.edu.cn/simple
