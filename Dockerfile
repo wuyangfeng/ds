@@ -6,26 +6,17 @@ RUN apt-get update && apt-get -y upgrade \
     && apt-get -y install liblzma-dev \ 
     && apt-get -y install libsndfile1 libsqlite3-dev\
     && apt -y install build-essential zlib1g-dev libbz2-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget \
-    && wget https://www.python.org/ftp/python/3.8.13/Python-3.8.13.tgz \
-    && tar -xzvf Python-3.8.13.tgz \
-    && cd Python-3.8.13 \
-    && ./configure --prefix=/usr/local/src/python38 \
+    && wget https://www.python.org/ftp/python/3.7.6/Python-3.7.6.tgz \
+    && tar -xzvf Python-3.7.6.tgz \
+    && cd Python-3.7.6 \
+    && ./configure --prefix=/usr/local/src/python37 \
     && make && make install \
     && rm -rf /usr/bin/python \
-    && ln -s /usr/local/src/python38/bin/python3.8 /usr/bin/python \
-    && ln -s /usr/local/src/python38/bin/pip3.8 /usr/bin/pip \
+    && ln -s /usr/local/src/python37/bin/python3.7 /usr/bin/python \
+    && ln -s /usr/local/src/python37/bin/pip3.7 /usr/bin/pip \
     && pip install --upgrade pip \
     && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install paddlepaddle-gpu \
-    && pip install paddlespeech \
-    && pip install ppgan  \
-    && pip install opencv-python-headless \
-    && wget http://ffmpeg.org/releases/ffmpeg-4.3.4.tar.gz \
-    && tar -zxvf ffmpeg-4.3.4.tar.gz \
-    && cd ffmpeg-4.3.4 \
-    && apt-get install yasm \
-    && ./configure \
-    && make && make install \
-    && pip install grpcio -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install grpcio-tools -i https://pypi.tuna.tsinghua.edu.cn/simple 
+    && pip install jieba colorlog colorama seqeval multiprocess datasets>=2.0.0 tqdm paddlefsl sentencepiece paddle2onnx \
+    && pip install pymilvus>=1.1.2 \
+    && pin install pandas==0.25.1 paddlenlp>=2.1.1 paddlepaddle-gpu>=2.1.3 hnswlib>=0.5.2 numpy>=1.17.2 visualdl>=2.2.2 paddle-serving-app>=0.7.0 paddle-serving-client>=0.7.0 paddle-serving-server-gpu>=0.7.0.post102 pybind11
     
