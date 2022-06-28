@@ -18,5 +18,5 @@ RUN apt-get update && apt-get -y upgrade \
     && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install jieba colorlog colorama seqeval multiprocess datasets>=2.0.0 tqdm paddlefsl sentencepiece paddle2onnx \
     && pip install pymilvus>=1.1.2 \
-    && pin install pandas==0.25.1 paddlenlp>=2.1.1 paddlepaddle-gpu>=2.1.3 hnswlib>=0.5.2 numpy>=1.17.2 visualdl>=2.2.2 paddle-serving-app>=0.7.0 paddle-serving-client>=0.7.0 paddle-serving-server-gpu>=0.7.0.post102 pybind11
+    && pip install pandas==0.25.1 paddlenlp>=2.1.1 paddlepaddle-gpu>=2.1.3 hnswlib>=0.5.2 numpy>=1.17.2 visualdl>=2.2.2 paddle-serving-app>=0.7.0 paddle-serving-client>=0.7.0 paddle-serving-server-gpu>=0.7.0.post102 pybind11
     
