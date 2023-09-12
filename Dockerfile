@@ -20,14 +20,12 @@
 #     && pip install pymilvus>=1.1.2 \
 #     && pip install pandas==0.25.1 paddlenlp>=2.1.1 paddlepaddle-gpu>=2.1.3 hnswlib>=0.5.2 numpy>=1.17.2 visualdl>=2.2.2 paddle-serving-app>=0.7.0 paddle-serving-client>=0.7.0 paddle-serving-server-gpu>=0.7.0.post102 pybind11 
 
-FROM nvidia/cuda:11.7-devel-ubuntu
+FROM nvidia/cuda:11.7.1-cudnn8-devel-ubuntu18.04
 
 RUN apt update && \
     apt install -y \
         wget build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev \
-        libreadline-dev libffi-dev libsqlite3-dev libbz2-dev liblzma-dev && \
-    apt clean && \
-    rm -rf /var/lib/apt/lists/*
+        libreadline-dev libffi-dev libsqlite3-dev libbz2-dev liblzma-dev
 
 WORKDIR /temp
 
