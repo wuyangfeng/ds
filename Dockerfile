@@ -107,7 +107,7 @@ ENV PYTHONPATH=/ragflow/
 ENV HF_ENDPOINT=https://hf-mirror.com
 
 ADD docker/entrypoint.sh ./entrypoint.sh
-ADD docker/.env ./
+# ADD docker/.env ./
 RUN chmod +x ./entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
