@@ -89,7 +89,7 @@
 
 # FROM tugraph/tugraph-runtime-centos7:latest
 
-FROM docker.io/library/caddy:2-alpine
+FROM docker.io/valkey/valkey:7-alpine
 # USER  root
 
 # WORKDIR /ragflow
