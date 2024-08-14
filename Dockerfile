@@ -89,7 +89,7 @@
 
 # FROM tugraph/tugraph-runtime-centos7:latest
 
-FROM  searx/searx:latest
+FROM  dalf/morty:latest
 # USER  root
 
 # WORKDIR /ragflow
