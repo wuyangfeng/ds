@@ -134,14 +134,14 @@ WORKDIR /home/autogen
 # ENV OPENAI_API_KEY="{OpenAI-API-Key}"
 
 # Clone the AutoGen repository
-RUN git clone https://github.com/microsoft/autogen.git /home/autogen/autogen
-WORKDIR /home/autogen/autogen
+# RUN git clone https://github.com/microsoft/autogen.git /home/autogen/autogen
+# WORKDIR /home/autogen/autogen
 
 # Install AutoGen in editable mode with extra components
-RUN sudo pip install -e .[test,teachable,lmm,retrievechat,mathchat,blendsearch]
+# RUN sudo pip install -e .[test,teachable,lmm,retrievechat,mathchat,blendsearch]
 
 # Install pre-commit hooks
-RUN pre-commit install
+# RUN pre-commit install
 
 # Setup Docusaurus and Yarn for the documentation website
 RUN sudo npm install --global yarn
