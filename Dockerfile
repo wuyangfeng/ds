@@ -113,7 +113,7 @@
 # ENTRYPOINT ["./entrypoint.sh"]
 
 # Basic setup
-FROM python:3.11
+FROM python:3.11-slim-bookworm
 
 # add git lhs to apt
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
