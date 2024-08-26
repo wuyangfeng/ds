@@ -113,56 +113,86 @@
 # ENTRYPOINT ["./entrypoint.sh"]
 
 # Basic setup
-FROM python:3.11-slim-bookworm
+# FROM python:3.11-slim-bookworm
 
-# add git lhs to apt
-RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+# # add git lhs to apt
+# RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
 
-# Update and install necessary packages
-RUN apt-get update && apt-get -y update
-# added vim and nano for convenience
-RUN apt-get install -y sudo git npm vim nano curl wget git-lfs
+# # Update and install necessary packages
+# RUN apt-get update && apt-get -y update
+# # added vim and nano for convenience
+# RUN apt-get install -y sudo git npm vim nano curl wget git-lfs
 
-# Setup a non-root user 'autogen' with sudo access
-RUN adduser --disabled-password --gecos '' autogen
-RUN adduser autogen sudo
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-USER autogen
-WORKDIR /home/autogen
+# # Setup a non-root user 'autogen' with sudo access
+# RUN adduser --disabled-password --gecos '' autogen
+# RUN adduser autogen sudo
+# RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+# USER autogen
+# WORKDIR /home/autogen
 
-# Set environment variable
-# ENV OPENAI_API_KEY="{OpenAI-API-Key}"
+# # Set environment variable
+# # ENV OPENAI_API_KEY="{OpenAI-API-Key}"
 
-# Clone the AutoGen repository
-# RUN git clone https://github.com/microsoft/autogen.git /home/autogen/autogen
-# WORKDIR /home/autogen/autogen
+# # Clone the AutoGen repository
+# # RUN git clone https://github.com/microsoft/autogen.git /home/autogen/autogen
+# # WORKDIR /home/autogen/autogen
 
-# Install AutoGen in editable mode with extra components
-# RUN sudo pip install -e .[test,teachable,lmm,retrievechat,mathchat,blendsearch]
+# # Install AutoGen in editable mode with extra components
+# # RUN sudo pip install -e .[test,teachable,lmm,retrievechat,mathchat,blendsearch]
 
-# Install pre-commit hooks
-# RUN pre-commit install
+# # Install pre-commit hooks
+# # RUN pre-commit install
 
-# Setup Docusaurus and Yarn for the documentation website
-RUN sudo npm install --global yarn
-RUN sudo pip install pydoc-markdown
-RUN cd website
-RUN yarn install --frozen-lockfile --ignore-engines
+# # Setup Docusaurus and Yarn for the documentation website
+# RUN sudo npm install --global yarn
+# RUN sudo pip install pydoc-markdown
+# RUN cd website
+# RUN yarn install --frozen-lockfile --ignore-engines
 
-RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
-    wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.23/quarto-1.5.23-linux-${arch}.tar.gz && \
-    mkdir -p /home/autogen/quarto/ && \
-    tar -xzf quarto-1.5.23-linux-${arch}.tar.gz --directory /home/autogen/quarto/ && \
-    rm quarto-1.5.23-linux-${arch}.tar.gz
+# RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
+#     wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.23/quarto-1.5.23-linux-${arch}.tar.gz && \
+#     mkdir -p /home/autogen/quarto/ && \
+#     tar -xzf quarto-1.5.23-linux-${arch}.tar.gz --directory /home/autogen/quarto/ && \
+#     rm quarto-1.5.23-linux-${arch}.tar.gz
 
-ENV PATH="${PATH}:/home/autogen/quarto/quarto-1.5.23/bin/"
+# ENV PATH="${PATH}:/home/autogen/quarto/quarto-1.5.23/bin/"
 
-# Exposes the Yarn port for Docusaurus
+# # Exposes the Yarn port for Docusaurus
+# EXPOSE 3000
+
+# # Pre-load popular Python packages
+# RUN pip install --upgrade pip
+# RUN pip install numpy pandas matplotlib seaborn scikit-learn requests urllib3 nltk pillow pytest beautifulsoup4
+
+# # Set the default command to bash
+# CMD ["/bin/bash"]
+
+
+FROM node:20-alpine
+RUN apk add --update libc6-compat python3 make g++
+# needed for pdfjs-dist
+RUN apk add --no-cache build-base cairo-dev pango-dev
+
+# Install Chromium
+RUN apk add --no-cache chromium
+
+#install PNPM globaly
+RUN npm install -g pnpm
+
+ENV PUPPETEER_SKIP_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
+ENV NODE_OPTIONS=--max-old-space-size=8192
+
+WORKDIR /usr/src
+
+# Copy app source
+COPY . .
+
+RUN pnpm install
+
+RUN pnpm build
+
 EXPOSE 3000
 
-# Pre-load popular Python packages
-RUN pip install --upgrade pip
-RUN pip install numpy pandas matplotlib seaborn scikit-learn requests urllib3 nltk pillow pytest beautifulsoup4
-
-# Set the default command to bash
-CMD ["/bin/bash"]
+CMD [ "pnpm", "start" ]
