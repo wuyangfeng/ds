@@ -169,4 +169,4 @@
 
 
 # Stage 1: Build stage
-FROM qwenllm/qwenvl:2-cu121
+FROM  mongodb/mongodb-community-server:latest
