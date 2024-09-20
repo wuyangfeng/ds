@@ -180,7 +180,7 @@ RUN apt update && \
 WORKDIR /temp
 
 # 下载python
-RUN cd /tmp && wget https://www.python.org/ftp/python/3.11.7/Python-3.11.7.tgz && \
+RUN wget https://www.python.org/ftp/python/3.11.7/Python-3.11.7.tgz && \
     tar -xvf Python-3.11.7.tgz
 
 # 编译&安装python
