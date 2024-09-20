@@ -169,4 +169,33 @@
 
 
 # Stage 1: Build stage
-FROM  mongodb/mongodb-community-server:latest
+# FROM  mongodb/mongodb-community-server:latest
+FROM nvidia/cuda:12.3.2-cudnn9-devel-ubuntu22.04
+
+RUN apt update && \
+    apt install -y \
+        wget build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev \
+        libreadline-dev libffi-dev libsqlite3-dev libbz2-dev liblzma-dev vim git
+
+WORKDIR /temp
+
+# 下载python
+RUN cd /tmp && wget https://www.python.org/ftp/python/3.11.7/Python-3.11.7.tgz && \
+    tar -xvf Python-3.11.7.tgz
+
+# 编译&安装python
+RUN cd Python-3.11.7 && \
+    ./configure --enable-optimizations && \
+    make && \
+    make install
+
+WORKDIR /workspace
+
+RUN rm -r /temp && \
+    ln -s /usr/local/bin/python3 /usr/local/bin/python && \
+    ln -s /usr/local/bin/pip3 /usr/local/bin/pip && \
+    pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple && \ 
+    git clone https://github.com/chatchat-space/Langchain-Chatchat.git && cd Langchain-Chatchat && git checkout v0.2.10 && \  
+    pip install -r requirements.txt && pip install -r requirements_api.txt &&  pip install -r requirements_webui.txt && pip install pymongo && \
+    cd .. && rm -rf Langchain-Chatchat
+EXPOSE 7861 8501
