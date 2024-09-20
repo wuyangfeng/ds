@@ -170,7 +170,7 @@
 
 # Stage 1: Build stage
 # FROM  mongodb/mongodb-community-server:latest
-FROM nvidia/cuda:12.3.2-cudnn9-devel-ubuntu22.04
+FROM nvcr.io/nvidia/cuda:12.3.2-cudnn9-devel-ubuntu22.04
 
 RUN apt update && \
     apt install -y \
