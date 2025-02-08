@@ -202,8 +202,7 @@
 
 FROM nvcr.io/nvidia/cuda:12.2.2-devel-ubuntu22.04
 
-RUN apt-get update && apt-get install build-essential cmake curl libcurl4-openssl-dev git -y && cd /root && \
-git clone https://github.com/ggerganov/llama.cpp && \
-cmake llama.cpp -B llama.cpp/build -DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON -DLLAMA_CURL=ON && \
-cmake --build llama.cpp/build --config Release -j --clean-first --target llama-quantize llama-cli llama-gguf-split && \
-cp llama.cpp/build/bin/llama-* llama.cpp
+RUN apt update && apt install -y cmake && apt install -y pkg-config && \
+cd llama.cpp-* && \
+cmake -B build -DGGML_CUDA=ON && \ 
+cmake --build build --config Release -j$(nproc)
