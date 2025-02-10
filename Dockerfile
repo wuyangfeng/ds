@@ -200,9 +200,9 @@
 #     cd .. && rm -rf Langchain-Chatchat
 # EXPOSE 7861 8501
 
-FROM nvcr.io/nvidia/cuda:12.2.2-devel-ubuntu22.04
+FROM nvcr.io/nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04
 
-RUN apt update && apt install -y cmake && apt install -y pkg-config && \
-cd llama.cpp-* && \
-cmake -B build -DGGML_CUDA=ON && \ 
-cmake --build build --config Release -j$(nproc)
+# RUN apt update && apt install -y cmake && apt install -y pkg-config && \
+# cd llama.cpp-* && \
+# cmake -B build -DGGML_CUDA=ON && \ 
+# cmake --build build --config Release -j$(nproc)
